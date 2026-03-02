@@ -115,7 +115,7 @@ struct gc9a01a_config {
     struct spi_dt_spec spi;
     struct gpio_dt_spec cmd_data;
     struct gpio_dt_spec reset;
-    
+    /** struct pwm_dt_spec backlight; */
     uint8_t pixel_format;
 	  uint16_t rotation;
 	  uint16_t x_resolution;
