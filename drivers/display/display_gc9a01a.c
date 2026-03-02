@@ -574,9 +574,9 @@ static const struct display_driver_api gc9a01a_api = {
 			    &gc9a01a_config_##n, POST_KERNEL,                 		\
 			    CONFIG_DISPLAY_INIT_PRIORITY, &gc9a01a_api)
 
-
-#define DT_INST_FOREACH_GC9A01A_STATUS_OKAY                         \
-	LISTIFY(DT_NUM_INST_STATUS_OKAY(waveshare_gc9a01a), GC9A01A_INIT,(;))
+/* Use older Zephyr compatible macro */
+#define DT_INST_FOREACH_GC9A01A_STATUS_OKAY    \
+    COND_CODE_1(DT_NUM_INST_STATUS_OKAY(waveshare_gc9a01a), (LISTIFY(DT_NUM_INST_STATUS_OKAY(waveshare_gc9a01a), GC9A01A_INIT, (;))), ())
 
 #ifdef CONFIG_GC9A01A
 DT_INST_FOREACH_GC9A01A_STATUS_OKAY;
