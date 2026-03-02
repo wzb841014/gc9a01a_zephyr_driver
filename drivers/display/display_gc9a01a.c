@@ -251,7 +251,7 @@ static int gc9a01a_configure(const struct device *dev)
 	enum display_orientation orientation;
 
 	/* pixel format */
-	if (config->pixel_format == GC9A01A_PIXEL_FORMAT_RGB565) {
+	if (config->pixel_format == PIXEL_FORMAT_RGB_565) {
 		pixel_format = PIXEL_FORMAT_RGB_565;
 	} else {
 		pixel_format = PIXEL_FORMAT_RGB_888;
