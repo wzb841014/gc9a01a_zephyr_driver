@@ -16,6 +16,7 @@
 #include <drivers/gpio.h>
 #include <drivers/spi.h>
 #include <drivers/pwm.h>
+#include <drivers/backlight.h> 
 #include <sys/util.h>
 
 /* Command registers*/
