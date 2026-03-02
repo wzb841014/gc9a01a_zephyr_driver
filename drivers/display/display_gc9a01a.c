@@ -293,28 +293,6 @@ static int gc9a01a_configure(const struct device *dev)
 }
 
 /**
- * @brief To set the backlight brightness of the display.
- *
- * @param dev GC9A01A device instance.
- * @param brightness percentage of brightness of the backlight.
- * @return 0 when succesful, errno otherwise.
- */
-static int gc9a01a_set_brightness(const struct device *dev,
-				  const uint8_t brightness)
-{
-	const struct gc9a01a_config *config = dev->config;
-	uint32_t step=config->backlight.period/100;
-	int ret = pwm_set_pulse_dt(&config->backlight,brightness*step);
-
-	if(ret){
-		LOG_ERR("Failed to set pulse width");
-		return ret;
-	}
-	return 0;
-
-}
-
-/**
  * @brief To initialize the peripherals associated with the display.
  *
  * @param dev GC9A01A device instance.
@@ -370,12 +348,6 @@ static int gc9a01a_init(const struct device *dev)
 	r = gc9a01a_exit_sleep(dev);
 	if (r < 0) {
 		LOG_ERR("Could not exit sleep mode (%d)", r);
-		return r;
-	}
-
-	r=gc9a01a_set_brightness(dev,50);
-	if (r < 0) {
-		LOG_ERR("Could not set brightness (%d)", r);
 		return r;
 	}
 
@@ -569,7 +541,6 @@ static const struct display_driver_api gc9a01a_api = {
 	.write = gc9a01a_write,
 	.read = gc9a01a_read,
 	.get_framebuffer = gc9a01a_get_framebuffer,
-	.set_brightness = gc9a01a_set_brightness,
 	.set_contrast = gc9a01a_set_contrast,
 	.get_capabilities = gc9a01a_get_capabilities,
 	.set_pixel_format = gc9a01a_set_pixel_format,
@@ -589,7 +560,6 @@ static const struct display_driver_api gc9a01a_api = {
 			cmd_data_gpios),											\
 		.reset = GPIO_DT_SPEC_GET_OR(INST_DT_GC9A01A(n),        		\
 			reset_gpios, {0}),    										\
-		.backlight = PWM_DT_SPEC_GET(DT_PROP(INST_DT_GC9A01A(n), backlight_gpios)),\
 		.pixel_format = DT_PROP(INST_DT_GC9A01A(n), pixel_format), 		\
 		.rotation= DT_PROP(INST_DT_GC9A01A(n), rotation),        		\
 		.x_resolution = DT_PROP(INST_DT_GC9A01A(n), width),            	\
