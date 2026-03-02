@@ -12,7 +12,6 @@
 
 #include "display_gc9a01a.h"
 
-#include <display/display_gc9x01x.h>
 #include <drivers/display.h>
 #include <sys/byteorder.h>
 #include <logging/log.h>
