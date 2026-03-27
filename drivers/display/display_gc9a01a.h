@@ -14,8 +14,8 @@
 #define ZEPHYR_DRIVERS_DISPLAY_DISPLAY_GC9A01A_H_
 
 #include <zephyr/drivers/gpio.h>
-#include <drivers/spi.h>
-#include <drivers/pwm.h>
+#include <zephyr/drivers/spi.h>
+#include <zephyr/drivers/pwm.h>
 #include <sys/util.h>
 
 /* Command registers*/
