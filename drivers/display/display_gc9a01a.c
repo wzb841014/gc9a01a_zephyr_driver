@@ -14,7 +14,7 @@
 
 #include <zephyr/drivers/display.h>
 #include <zephyr/sys/byteorder.h>
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(display_gc9a01a, CONFIG_DISPLAY_LOG_LEVEL);
 
