@@ -12,7 +12,7 @@
 
 #include "display_gc9a01a.h"
 
-#include <drivers/display.h>
+#include <zephyr/drivers/display.h>
 #include <sys/byteorder.h>
 #include <logging/log.h>
 
