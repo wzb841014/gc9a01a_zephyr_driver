@@ -13,7 +13,7 @@
 #ifndef ZEPHYR_DRIVERS_DISPLAY_DISPLAY_GC9A01A_H_
 #define ZEPHYR_DRIVERS_DISPLAY_DISPLAY_GC9A01A_H_
 
-#include <drivers/gpio.h>
+#include <zephyr/drivers/gpio.h>
 #include <drivers/spi.h>
 #include <drivers/pwm.h>
 #include <sys/util.h>
